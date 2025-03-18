@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LittleWeather Icon Generator</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .canvas-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .icon-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        canvas {
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .instructions {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>LittleWeather Icon Generator</h1>
+    
+    <p>Click the buttons below to generate and download icons for the LittleWeather PWA:</p>
+    
+    <div class="canvas-container">
+        <div class="icon-wrapper">
+            <canvas id="icon192" width="192" height="192"></canvas>
+            <button onclick="downloadIcon(192)">Download 192x192</button>
+        </div>
+        <div class="icon-wrapper">
+            <canvas id="icon512" width="512" height="512"></canvas>
+            <button onclick="downloadIcon(512)">Download 512x512</button>
+        </div>
+    </div>
+
+    <button onclick="generateAllIcons()">Generate All Icons</button>
+
+    <div class="instructions">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Click "Generate All Icons" to preview the icons</li>
+            <li>Download each icon size using the buttons</li>
+            <li>Place the downloaded icons in the <code>public/icons</code> directory</li>
+            <li>The icons will be used by the PWA manifest for app installation</li>
+        </ol>
+    </div>
+
+    <script>
+        // Draw weather icon on canvas
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Set background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, size);
+            gradient.addColorStop(0, '#4a90e2');  // Blue sky
+            gradient.addColorStop(1, '#87ceeb');  // Light blue
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Draw sun
+            const sunRadius = size * 0.25;
+            const sunX = size * 0.3;
+            const sunY = size * 0.3;
+            
+            ctx.beginPath();
+            ctx.arc(sunX, sunY, sunRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffeb3b';
+            ctx.fill();
+            
+            // Draw cloud
+            drawCloud(ctx, size * 0.6, size * 0.55, size * 0.4);
+            
+            // Draw border radius
+            drawRoundedBorder(ctx, size);
+        }
+        
+        function drawCloud(ctx, x, y, size) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            
+            // Draw main cloud circle
+            ctx.beginPath();
+            ctx.arc(x, y, size * 0.5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw additional cloud circles
+            ctx.beginPath();
+            ctx.arc(x - size * 0.4, y + size * 0.1, size * 0.3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(x + size * 0.4, y + size * 0.05, size * 0.35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(x, y - size * 0.15, size * 0.4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function drawRoundedBorder(ctx, size) {
+            // Draw rounded corners by clipping the canvas
+            const radius = size * 0.15;  // Rounded corner radius
+            
+            ctx.beginPath();
+            ctx.moveTo(size, size - radius);
+            ctx.quadraticCurveTo(size, size, size - radius, size);
+            ctx.lineTo(radius, size);
+            ctx.quadraticCurveTo(0, size, 0, size - radius);
+            ctx.lineTo(0, radius);
+            ctx.quadraticCurveTo(0, 0, radius, 0);
+            ctx.lineTo(size - radius, 0);
+            ctx.quadraticCurveTo(size, 0, size, radius);
+            ctx.closePath();
+            
+            // Draw a shadow effect around the icon
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+            ctx.stroke();
+        }
+        
+        // Generate all icons
+        function generateAllIcons() {
+            drawIcon(document.getElementById('icon192'), 192);
+            drawIcon(document.getElementById('icon512'), 512);
+        }
+        
+        // Download icon as PNG
+        function downloadIcon(size) {
+            const canvas = document.getElementById(`icon${size}`);
+            const link = document.createElement('a');
+            link.download = `icon-${size}x${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Generate icons on page load
+        window.onload = generateAllIcons;
+    </script>
+</body>
+</html> 

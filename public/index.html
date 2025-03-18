@@ -1,0 +1,131 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LittleWeather</title>
+    <link rel="stylesheet" href="forecast.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Kids' Weather Wardrobe Helper - Tells you what to wear based on the weather">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+  </head>
+  <body>
+    <div class="weather-card">
+      <header class="header">
+        <h1>LittleWeather</h1>
+        <p>High Point</p>
+      </header>
+      
+      <!-- Date headers -->
+      <div class="weather-grid">
+        <div class="date-header">
+          <div class="day-name">Tuesday</div>
+          <div class="date">18 Mar</div>
+        </div>
+        <div class="date-header tomorrow">
+          <div class="day-name">Wednesday</div>
+          <div class="date">19 Mar</div>
+        </div>
+      </div>
+      
+      <!-- Weather displays -->
+      <div class="weather-grid">
+        <div class="weather-display">
+          <div class="weather-icon">☀️</div>
+          <div class="temps">
+            <div class="high-temp">67°F</div>
+            <div class="low-temp">51°F</div>
+          </div>
+          <div class="weather-description">clear sky</div>
+        </div>
+        <div class="weather-display tomorrow">
+          <div class="weather-icon">☁️</div>
+          <div class="temps">
+            <div class="high-temp">71°F</div>
+            <div class="low-temp">48°F</div>
+          </div>
+          <div class="weather-description">clear sky</div>
+        </div>
+      </div>
+      
+      <!-- Sun times -->
+      <div class="sun-times">
+        <div class="sunrise">
+          <span class="sun-icon">🌅</span>
+          <span>7am</span>
+        </div>
+        <div class="sunset">
+          <span class="sun-icon">🌇</span>
+          <span>7pm</span>
+        </div>
+      </div>
+      
+      <!-- Clothing recommendations -->
+      <div class="clothing">
+        <div class="clothing-column">
+          <div class="clothing-title">Today's Outfit</div>
+          <div class="clothing-item">
+            <div class="clothing-icon">👕</div>
+            <div class="clothing-text">Long sleeve shirt</div>
+          </div>
+          <div class="clothing-item">
+            <div class="clothing-icon">👖</div>
+            <div class="clothing-text">Pants</div>
+          </div>
+          <div class="clothing-item">
+            <div class="clothing-icon">👟</div>
+            <div class="clothing-text">Sneakers</div>
+          </div>
+          
+          <div class="clothing-item">
+            <div class="clothing-icon">🧥</div>
+            <div class="clothing-text">Light jacket</div>
+          </div>
+          
+        </div>
+        <div class="clothing-column tomorrow">
+          <div class="clothing-title">Tomorrow's Outfit</div>
+          <div class="clothing-item">
+            <div class="clothing-icon">👕</div>
+            <div class="clothing-text">Long sleeve shirt</div>
+          </div>
+          <div class="clothing-item">
+            <div class="clothing-icon">👖</div>
+            <div class="clothing-text">Pants</div>
+          </div>
+          <div class="clothing-item">
+            <div class="clothing-icon">👟</div>
+            <div class="clothing-text">Sneakers</div>
+          </div>
+          
+          <div class="clothing-item">
+            <div class="clothing-icon">🧥</div>
+            <div class="clothing-text">Light jacket</div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- Alerts section -->
+    
+    
+    <div class="footer">
+      Updated: 3/18/2025, 1:57:53 PM
+    </div>
+
+    <script>
+      // Register the service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('ServiceWorker registered with scope:', registration.scope))
+            .catch(err => console.error('ServiceWorker registration failed:', err));
+        });
+      }
+    </script>
+  </body>
+  </html>
+  

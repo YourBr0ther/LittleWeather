@@ -1,0 +1,54 @@
+{
+  "cityName": "High Point",
+  "sunrise": "7am",
+  "sunset": "7pm",
+  "days": [
+    {
+      "date": {
+        "dayName": "Tuesday",
+        "day": 18,
+        "month": "Mar",
+        "dateString": "Tuesday, 18 Mar"
+      },
+      "highTemp": 67,
+      "lowTemp": 51,
+      "avgTemp": 59,
+      "mainIcon": "01d",
+      "mainWeather": "Clear",
+      "weatherDescription": "clear sky",
+      "clothing": {
+        "top": "Long sleeve shirt",
+        "bottom": "Pants",
+        "footwear": "Sneakers",
+        "outerwear": "Light jacket",
+        "accessories": "None"
+      },
+      "needsRainGear": false,
+      "needsSnowGear": false
+    },
+    {
+      "date": {
+        "dayName": "Wednesday",
+        "day": 19,
+        "month": "Mar",
+        "dateString": "Wednesday, 19 Mar"
+      },
+      "highTemp": 71,
+      "lowTemp": 48,
+      "avgTemp": 59.5,
+      "mainIcon": "04d",
+      "mainWeather": "Clear",
+      "weatherDescription": "clear sky",
+      "clothing": {
+        "top": "Long sleeve shirt",
+        "bottom": "Pants",
+        "footwear": "Sneakers",
+        "outerwear": "Light jacket",
+        "accessories": "None"
+      },
+      "needsRainGear": false,
+      "needsSnowGear": false
+    }
+  ],
+  "timestamp": "3/18/2025, 1:57:53 PM"
+}

@@ -1,0 +1,245 @@
+/* LittleWeather - eInk Display Styles */
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #000000;
+  --light-bg: #f8f8f8;
+  --accent-color: #444444;
+  --alert-bg: #000000;
+  --alert-text: #ffffff;
+  --font-family: 'Arial', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.weather-card {
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header h1 {
+  font-size: 28px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.header p {
+  font-size: 16px;
+  color: var(--accent-color);
+}
+
+/* Weather grid */
+.weather-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Date headers */
+.date-header {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.date-header.tomorrow {
+  background-color: var(--light-bg);
+  border-left: 1px solid var(--border-color);
+}
+
+.day-name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 16px;
+}
+
+/* Weather display */
+.weather-display {
+  padding: 20px;
+  text-align: center;
+}
+
+.weather-display.tomorrow {
+  background-color: var(--light-bg);
+  border-left: 1px solid var(--border-color);
+}
+
+.weather-icon {
+  font-size: 60px;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.temps {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.high-temp {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.low-temp {
+  font-size: 24px;
+  color: var(--accent-color);
+}
+
+.weather-description {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: var(--accent-color);
+}
+
+/* Sun times */
+.sun-times {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 16px;
+}
+
+.sunrise, .sunset {
+  display: flex;
+  align-items: center;
+}
+
+.sun-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+/* Clothing recommendations */
+.clothing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.clothing-column {
+  padding: 15px;
+}
+
+.clothing-column.tomorrow {
+  background-color: var(--light-bg);
+  border-left: 1px solid var(--border-color);
+}
+
+.clothing-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.clothing-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.clothing-icon {
+  font-size: 22px;
+  margin-right: 10px;
+  min-width: 30px;
+  text-align: center;
+}
+
+.clothing-text {
+  font-size: 16px;
+}
+
+/* Alerts */
+.alerts {
+  margin-top: 10px;
+}
+
+.alert {
+  background-color: var(--alert-bg);
+  color: var(--alert-text);
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.alert-icon {
+  font-size: 20px;
+}
+
+/* Error message */
+.error-message {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.error-message h1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--accent-color);
+  margin-top: 20px;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 500px) {
+  body {
+    padding: 10px;
+  }
+  
+  .high-temp {
+    font-size: 32px;
+  }
+  
+  .low-temp {
+    font-size: 20px;
+  }
+  
+  .weather-icon {
+    font-size: 50px;
+  }
+} 
